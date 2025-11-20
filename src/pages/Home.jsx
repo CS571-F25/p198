@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 
 export default function Home({ user }) {
   return (
-    <div className="text-center fullpage">
+    <div className="page-fullscreen">
       <h1 className="display-5 fw-bold">Welcome to MatchBites</h1>
       <p className="lead">
         Swipe, match, and plan meals with your friends — all in one place.

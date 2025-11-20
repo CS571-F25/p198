@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div>
+    <div className="page-fullscreen">
       <h2>About MatchBites</h2>
       <p>
         MatchBites helps groups decide where to eat without endless debates.

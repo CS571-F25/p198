@@ -4,6 +4,18 @@ html, body, #root {
   padding: 0;
 }
 
+.page-fullscreen {
+  min-height: 100vh;        /* full viewport height */
+  width: 100%;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
 .fullpage {
   min-height: 100vh;
   display: flex;
@@ -17,20 +29,18 @@ html, body, #root {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
