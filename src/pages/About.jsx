@@ -1,5 +1,6 @@
 import uwLogo from "../assets/UWcrest.png";
 import cmuLogo from "../assets/cmuSeal.jpg";
+import PersonCard from "../components/PersonCard";
 
 export default function About() {
   return (
@@ -8,29 +9,42 @@ export default function About() {
         <h1 className="fw-bold mb-3">About MatchBites</h1>
 
         <p className="mb-3">
-          MatchBites is built by two long-time friends who are tired of watching
-          group plans die in the group chat. We’re both in friend groups that
-          can never decide on anything, and we wanted to fix that — not just for
-          ourselves, but for everyone on campus and beyond.
+          MatchBites is a collaboration between students at the University of
+          Wisconsin–Madison and Carnegie Mellon University. We are two
+          long-time friends who were tired of watching group plans die in the
+          group chat, and we wanted to fix that — not just for ourselves, but
+          for everyone on campus and beyond.
         </p>
 
+        {/* School Logos */}
         <div className="school-logos mb-4">
-          <div className="d-flex align-items-center gap-2">
-            <img
-              src={uwLogo}
-              alt="University of Wisconsin–Madison crest"
-              className="school-logo-img"
-            />
-            <span>Vincent Zhou — Junior, UW–Madison</span>
-          </div>
+          <p className="mb-2">
+            This project brings together design and engineering perspectives
+            from both UW–Madison and CMU.
+          </p>
 
-          <div className="d-flex align-items-center gap-2">
-            <img
-              src={cmuLogo}
-              alt="Carnegie Mellon University seal"
-              className="school-logo-img"
-            />
-            <span>Andi Sun — Junior, Carnegie Mellon University</span>
+          <div className="d-flex flex-column flex-md-row align-items-start gap-3">
+            <div className="d-flex align-items-center gap-2">
+              <img
+                src={uwLogo}
+                alt="University of Wisconsin–Madison crest"
+                className="school-logo-img"
+              />
+              <span className="fw-semibold">
+                University of Wisconsin–Madison
+              </span>
+            </div>
+
+            <div className="d-flex align-items-center gap-2">
+              <img
+                src={cmuLogo}
+                alt="Carnegie Mellon University seal"
+                className="school-logo-img"
+              />
+              <span className="fw-semibold">
+                Carnegie Mellon University
+              </span>
+            </div>
           </div>
         </div>
 
@@ -65,12 +79,32 @@ export default function About() {
           </li>
         </ul>
 
-        <p className="mb-0">
+        <p className="mb-4">
           We’re starting with college campuses, where social life, new people,
           and local discovery all collide. But the same idea can help families,
           travelers, and any group that struggles to turn “we should hang out”
           into “we’re on the way.”
         </p>
+
+        {/* Person cards at the bottom */}
+        <h2 className="fw-semibold mb-2">Meet the team</h2>
+        <p className="mb-3">
+          MatchBites was built by two friends who care about making it easier
+          for groups to actually follow through on great ideas.
+        </p>
+
+        <div className="team-card-grid">
+          <PersonCard
+            name="Vincent Zhou"
+            college="University of Wisconsin–Madison"
+            major="Co-founder · Product & Engineering"
+          />
+          <PersonCard
+            name="Andi Sun"
+            college="Carnegie Mellon University"
+            major="Co-founder · Product & Design"
+          />
+        </div>
       </div>
     </div>
   );
