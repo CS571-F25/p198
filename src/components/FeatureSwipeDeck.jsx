@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
 import FeatureCard from "./FeatureCard";
 
-// Shuffle helper
+// Shuffle helper for initial random order
 function shuffleArray(arr) {
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -12,7 +11,6 @@ function shuffleArray(arr) {
   return copy;
 }
 
-// Your feature roadmap content
 const FEATURES = [
   {
     id: "friends-privacy",
@@ -39,7 +37,7 @@ const FEATURES = [
     id: "maps",
     title: "Google Maps Link / Mini Map",
     description:
-      "Show where each place is on a map or open directions in Google Maps. A high-value, low-effort way to make decisions more grounded.",
+      "Show where each place is on a map or open it directly in Google Maps. A high-value, low-friction way to make decisions more grounded.",
     tag: "Maps",
   },
   {
@@ -80,74 +78,85 @@ const FEATURES = [
 ];
 
 export default function FeatureSwipeDeck() {
-  // Randomized queue that stays fixed for this session
   const featureQueue = useMemo(() => shuffleArray(FEATURES), []);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  const currentFeature = featureQueue[currentIndex];
+  const len = featureQueue.length;
+  const center = featureQueue[currentIndex];
+  const left = featureQueue[(currentIndex - 1 + len) % len];
+  const right = featureQueue[(currentIndex + 1) % len];
 
-  // Motion values
-  const x = useMotionValue(0);
-  const rotate = useTransform(x, [-200, 200], [-15, 15]);
-  const likeOpacity = useTransform(x, [60, 140], [0, 1]);
-  const skipOpacity = useTransform(x, [-140, -60], [1, 0]);
-
-  const handleDragEnd = (_event, info) => {
-    if (info.offset.x > 120) {
-      // Swiped right
-      advanceCard();
-    } else if (info.offset.x < -120) {
-      // Swiped left
-      advanceCard();
-    } else {
-      x.set(0); // snap back
-    }
+  const goNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % len);
+    if (!hasInteracted) setHasInteracted(true);
   };
 
-  const advanceCard = () => {
-    setCurrentIndex((prev) => (prev + 1) % featureQueue.length);
-    x.set(0);
+  const goPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + len) % len);
+    if (!hasInteracted) setHasInteracted(true);
   };
 
   return (
-    <section aria-labelledby="features-heading" className="mb-5">
-      <header className="mb-3">
-        <h2 id="features-heading" className="fw-bold mb-1">
-          What we’re building into MatchBites
+    <section
+      aria-labelledby="feature-deck-heading"
+      className="mb-5 feature-carousel-section"
+    >
+      <header className="mb-3 text-center">
+        <h2 id="feature-deck-heading" className="fw-bold mb-2">
+          Explore the MatchBites feature roadmap
         </h2>
         <p className="text-muted mb-0">
-          Swipe through upcoming features just like you’d swipe on restaurants in the app.
+          Think of this like swiping on the app itself — scroll through the
+          features we’re building to make planning with friends simpler and more
+          social.
         </p>
       </header>
 
-      <div className="feature-swipe-wrapper">
-        {/* Like / Skip labels */}
-        <motion.div
-          className="swipe-label swipe-label-like"
-          style={{ opacity: likeOpacity }}
-        >
-          LIKE
-        </motion.div>
-        <motion.div
-          className="swipe-label swipe-label-skip"
-          style={{ opacity: skipOpacity }}
-        >
-          SKIP
-        </motion.div>
+      <div className="feature-carousel-bg">
+        <div className="feature-carousel-track">
+          {/* Left card */}
+          <div className="feature-carousel-card feature-carousel-card-side">
+            <FeatureCard feature={left} />
+          </div>
 
-        <motion.div
-          className="feature-swipe-card-wrapper"
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          style={{ x, rotate }}
-          onDragEnd={handleDragEnd}
-        >
-          <FeatureCard feature={currentFeature} />
-        </motion.div>
+          {/* Center card */}
+          <div className="feature-carousel-card feature-carousel-card-center">
+            <FeatureCard feature={center} />
+          </div>
+
+          {/* Right card */}
+          <div className="feature-carousel-card feature-carousel-card-side">
+            <FeatureCard feature={right} />
+          </div>
+
+          {/* Nav arrows */}
+          <button
+            type="button"
+            className={`feature-carousel-arrow feature-carousel-arrow-left ${
+              !hasInteracted ? "feature-carousel-arrow-hint" : ""
+            }`}
+            onClick={goPrev}
+            aria-label="Previous feature"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className={`feature-carousel-arrow feature-carousel-arrow-right ${
+              !hasInteracted ? "feature-carousel-arrow-hint" : ""
+            }`}
+            onClick={goNext}
+            aria-label="Next feature"
+          >
+            ›
+          </button>
+        </div>
 
         <p className="mt-3 text-muted small text-center">
-          Swipe right if you like it, left if you don’t. Cards will keep looping in a random order.
-          Swipes here are just for demo — they don’t affect any saved data.
+          Tap the arrows or cards to move through the carousel. Cards snap into
+          the center for easy reading, and you can loop through the stack as
+          many times as you’d like.
         </p>
       </div>
     </section>

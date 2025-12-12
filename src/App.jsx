@@ -1,9 +1,12 @@
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
+
+const FIGMA_URL = "https://gum-cream-89552792.figma.site";
 
 export default function App() {
   return (
@@ -17,7 +20,7 @@ export default function App() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="main-navbar" />
             <Navbar.Collapse id="main-navbar">
-              <Nav className="ms-3">
+              <Nav className="me-auto ms-3">
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
@@ -28,6 +31,16 @@ export default function App() {
                   Contact
                 </Nav.Link>
               </Nav>
+              {/* Figma button on right */}
+              <Button
+                variant="outline-primary"
+                size="sm"
+                href={FIGMA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Try the Prototype
+              </Button>
             </Navbar.Collapse>
           </Container>
         </Navbar>
@@ -40,11 +53,6 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-
-        {/* Footer */}
-        <footer className="text-center text-muted small py-3">
-          © {new Date().getFullYear()} MatchBites — Find food, together.
-        </footer>
       </div>
     </HashRouter>
   );
