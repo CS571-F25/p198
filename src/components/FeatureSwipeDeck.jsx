@@ -31,7 +31,7 @@ const FEATURES = [
     description:
       "Add friends, create groups, and limit visibility of matches and chats so only your people see your plans. This is essential for trust and usability.",
     tag: "Core",
-    image: friendsPrivacyImg,
+    image: friends-privacy.png,
     imageAlt: "Friends and lock icon",
   },
   {
@@ -58,7 +58,7 @@ const FEATURES = [
     description:
       "Show where each place is on a map or open it directly in Google Maps. A high-value, low-friction way to make decisions more grounded.",
     tag: "Maps",
-    image: mapsImg,
+    image: maps.png,
     imageAlt: "Map pin icon",
   },
   {
@@ -76,7 +76,7 @@ const FEATURES = [
     description:
       "See when friends liked or visited a place, and if a friend reviews that restaurant, their review appears on the restaurant card so you can get opinions from people you trust.",
     tag: "Social",
-    image: friendActivityImg,
+    image: friend-activityImg,
     imageAlt: "User with star icon",
   },
     {
@@ -85,7 +85,7 @@ const FEATURES = [
     description:
       "Separate saved places into 'Want to Try' and 'Have Tried' lists. Great for both group planning and solo exploring.",
     tag: "Personal",
-    image: listsImg,
+    image: lists.png,
     imageAlt: "Checklist icon",
   },
   {
@@ -94,7 +94,7 @@ const FEATURES = [
     description:
       "Down the line, connect to OpenTable or Yelp so you can book directly after matching instead of jumping between apps.",
     tag: "Future",
-    image: reservationsImg,
+    image: reservations.png,
     imageAlt: "Calendar with clock icon",
   },
   {
@@ -103,7 +103,7 @@ const FEATURES = [
     description:
       "Send plans to Google or Apple Calendar so everyone stays aligned on when and where you’re meeting, and automatically check each person’s calendar to find overlapping free times and suggest the best reservation slots.",
     tag: "Future",
-    image: calendarImg,
+    image: calendar.png,
     imageAlt: "Calendar with arrow icon",
   },
   {
@@ -112,7 +112,7 @@ const FEATURES = [
     description:
       "Let groups match on a place when a set portion of the group swipes right (for example, 3 of 5 people), so it’s easier to find options most people like.",
     tag: "Future",
-    image: flexibleMatchingImg,
+    image: flexible-matching.png,
     imageAlt: "Slider controls icon",
   },
   {
@@ -121,7 +121,7 @@ const FEATURES = [
     description:
       "Run quick polls or ranked-choice votes in the group chat to pick from your top matches when there are multiple good options.",
     tag: "Future",
-    image: inAppPollingImg,
+    image: in-app-polling.png,
     imageAlt: "Checkbox list icon",
   },
 ];
