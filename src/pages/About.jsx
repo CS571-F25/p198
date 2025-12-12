@@ -1,7 +1,6 @@
 import uwLogo from "../assets/UWcrest.png";
 import cmuLogo from "../assets/cmuSeal.jpg";
 import PersonCard from "../components/PersonCard";
-import vincentProfilePic from "../assets/vincentProfilePic.jpeg";
 
 export default function About() {
   return (
@@ -92,8 +91,6 @@ export default function About() {
             name="Vincent Zhou"
             college="University of Wisconsin–Madison"
             title="Co-founder · Chief of Product & Design"
-            photo={vincentProfilePic}
-            photoAlt="Portrait of Vincent Zhou"
           />
           <PersonCard
             name="Andi Sun"
