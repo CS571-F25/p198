@@ -105,6 +105,18 @@
 .feature-card-hero-image {
   width: 100%;
   aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem; /* adds breathing room around the icon */
+}
+
+/* Icon inside feature card */
+.feature-card-hero-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* Flip card wrapper */

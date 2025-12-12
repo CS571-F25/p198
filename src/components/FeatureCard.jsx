@@ -34,7 +34,7 @@ export default function FeatureCard({ feature }) {
                 <img
                   src={image}
                   alt={imageAlt || title}
-                  className="w-100 h-100 object-fit-cover"
+                  className="feature-card-hero-img"
                 />
               ) : (
                 <div className="d-flex h-100 w-100 align-items-center justify-content-center text-muted">
