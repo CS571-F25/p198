@@ -1,6 +1,7 @@
 import uwLogo from "../assets/UWcrest.png";
 import cmuLogo from "../assets/cmuSeal.jpg";
 import PersonCard from "../components/PersonCard";
+import vincentProfilePic from "../assets/vincentProfilePic.jpeg";
 
 export default function About() {
   return (
@@ -36,9 +37,7 @@ export default function About() {
                 alt="Carnegie Mellon University seal"
                 className="school-logo-img"
               />
-              <span className="fw-semibold">
-                Carnegie Mellon University
-              </span>
+              <span className="fw-semibold">Carnegie Mellon University</span>
             </div>
           </div>
         </div>
