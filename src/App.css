@@ -13,8 +13,9 @@
   }
 }
 
+/* Slightly wider content so hero image can be larger */
 .page-inner {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -28,7 +29,8 @@
 
 @media (min-width: 768px) {
   .home-hero {
-    grid-template-columns: 1.2fr 1fr;
+    /* give the image more space than the text */
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
   }
 }
 
@@ -45,7 +47,7 @@
   margin-top: 1rem;
 }
 
-/* Feature “swipe deck” carousel */
+/* Feature deck container with subtle dotted background */
 .feature-carousel-section {
   margin-top: 2rem;
 }
@@ -54,8 +56,6 @@
   background-color: #ffffff;
   border-radius: 24px;
   padding: 2rem 1rem 3rem;
-  /* subtle polka-dot style background;
-     replace with a small logo image if you want */
   background-image: radial-gradient(
     circle at 0 0,
     rgba(220, 53, 69, 0.06) 1.5px,
@@ -64,87 +64,32 @@
   background-size: 40px 40px;
 }
 
-.feature-carousel-track {
-  position: relative;
+/* Horizontal scroll carousel */
+.feature-carousel-scroll {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
   gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-.feature-carousel-card {
-  flex: 0 0 70%;
-  max-width: 320px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+/* Make it obvious that there’s content to the left/right */
+.feature-carousel-scroll::before,
+.feature-carousel-scroll::after {
+  content: "";
+  flex: 0 0 0.5rem;
 }
 
-.feature-carousel-card-center {
-  transform: scale(1);
-  opacity: 1;
-  z-index: 2;
-}
-
-.feature-carousel-card-side {
-  transform: scale(0.9);
-  opacity: 0.6;
-}
-
-/* Arrow buttons */
-.feature-carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background-color: #ffffff;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  width: 40px;
-  height: 40px;
-  font-size: 1.5rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.feature-carousel-arrow-left {
-  left: 0.25rem;
-}
-
-.feature-carousel-arrow-right {
-  right: 0.25rem;
-}
-
-/* “Hint” state for first interaction */
-.feature-carousel-arrow-hint {
-  animation: arrowHint 1s ease-in-out infinite alternate;
-}
-
-@keyframes arrowHint {
-  from {
-    transform: translateY(-50%) scale(1);
-  }
-  to {
-    transform: translateY(-50%) scale(1.08);
-  }
+/* Individual card wrapper */
+.feature-carousel-card-snap {
+  flex: 0 0 80%;
+  max-width: 360px;
+  scroll-snap-align: center;
 }
 
 /* Feature card hero image area */
 .feature-card-hero-image {
   width: 100%;
   aspect-ratio: 4 / 3;
-}
-
-/* If you don't already have these */
-.school-logos {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.school-logo-img {
-  height: 70px;
-  width: auto;
 }

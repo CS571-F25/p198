@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import FeatureCard from "./FeatureCard";
 
 // Shuffle helper for initial random order
@@ -79,84 +79,41 @@ const FEATURES = [
 
 export default function FeatureSwipeDeck() {
   const featureQueue = useMemo(() => shuffleArray(FEATURES), []);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hasInteracted, setHasInteracted] = useState(false);
-
-  const len = featureQueue.length;
-  const center = featureQueue[currentIndex];
-  const left = featureQueue[(currentIndex - 1 + len) % len];
-  const right = featureQueue[(currentIndex + 1) % len];
-
-  const goNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % len);
-    if (!hasInteracted) setHasInteracted(true);
-  };
-
-  const goPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + len) % len);
-    if (!hasInteracted) setHasInteracted(true);
-  };
 
   return (
     <section
       aria-labelledby="feature-deck-heading"
       className="mb-5 feature-carousel-section"
     >
-      <header className="mb-3 text-center">
+      <header className="mb-3">
         <h2 id="feature-deck-heading" className="fw-bold mb-2">
           Explore the MatchBites feature roadmap
         </h2>
+        {/* Intro text – old “Think of this like swiping…” line is removed */}
         <p className="text-muted mb-0">
-          Think of this like swiping on the app itself — scroll through the
-          features we’re building to make planning with friends simpler and more
-          social.
+          Browse some of the core and future features we’re exploring to make
+          planning with friends faster, clearer, and more social.
         </p>
       </header>
 
       <div className="feature-carousel-bg">
-        <div className="feature-carousel-track">
-          {/* Left card */}
-          <div className="feature-carousel-card feature-carousel-card-side">
-            <FeatureCard feature={left} />
-          </div>
-
-          {/* Center card */}
-          <div className="feature-carousel-card feature-carousel-card-center">
-            <FeatureCard feature={center} />
-          </div>
-
-          {/* Right card */}
-          <div className="feature-carousel-card feature-carousel-card-side">
-            <FeatureCard feature={right} />
-          </div>
-
-          {/* Nav arrows */}
-          <button
-            type="button"
-            className={`feature-carousel-arrow feature-carousel-arrow-left ${
-              !hasInteracted ? "feature-carousel-arrow-hint" : ""
-            }`}
-            onClick={goPrev}
-            aria-label="Previous feature"
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            className={`feature-carousel-arrow feature-carousel-arrow-right ${
-              !hasInteracted ? "feature-carousel-arrow-hint" : ""
-            }`}
-            onClick={goNext}
-            aria-label="Next feature"
-          >
-            ›
-          </button>
+        <div
+          className="feature-carousel-scroll"
+          aria-label="Feature cards carousel"
+        >
+          {featureQueue.map((feature) => (
+            <div
+              key={feature.id}
+              className="feature-carousel-card-snap"
+            >
+              <FeatureCard feature={feature} />
+            </div>
+          ))}
         </div>
 
         <p className="mt-3 text-muted small text-center">
-          Tap the arrows or cards to move through the carousel. Cards snap into
-          the center for easy reading, and you can loop through the stack as
-          many times as you’d like.
+          Tip: swipe or scroll sideways to see more features. Cards gently snap
+          into place so the center one is easy to read.
         </p>
       </div>
     </section>
