@@ -1,27 +1,26 @@
 import { useMemo } from "react";
 import FeatureCard from "./FeatureCard";
 
-import friendsPrivacyImg from "../assets/features/friends-privacy.png";
-import filtersImg from "../assets/features/filters.png";
-import undoImg from "../assets/features/undo.png";
-import mapsImg from "../assets/features/maps.png";
-import menuImg from "../assets/features/menu.png";
-import friendActivityImg from "../assets/features/friend-activity.png";
-import listsImg from "../assets/features/lists.png";
-import reservationsImg from "../assets/features/reservations.png";
-import calendarImg from "../assets/features/calendar.png";
-import flexibleMatchingImg from "../assets/features/flexible-matching.png";
-import inAppPollingImg from "../assets/features/in-app-polling.png";
-
+import friendsPrivacyImg from "../assets/friends-privacy.png";
+import filtersImg from "../assets/filters.png";
+import undoImg from "../assets/undo.png";
+import mapsImg from "../assets/maps.png";
+import menuImg from "../assets/menu.png";
+import friendActivityImg from "../assets/friend-activity.png";
+import listsImg from "../assets/lists.png";
+import reservationsImg from "../assets/reservations.png";
+import calendarImg from "../assets/calendar.png";
+import flexibleMatchingImg from "../assets/flexible-matching.png";
+import inAppPollingImg from "../assets/in-app-polling.png";
 
 // Shuffle helper for initial random order
 function shuffleArray(arr) {
-    const copy = [...arr];
-    for (let i = copy.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy;
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
 }
 
 const FEATURES = [
@@ -31,7 +30,7 @@ const FEATURES = [
     description:
       "Add friends, create groups, and limit visibility of matches and chats so only your people see your plans. This is essential for trust and usability.",
     tag: "Core",
-    image: friends-privacy.png,
+    image: friendsPrivacyImg,
     imageAlt: "Friends and lock icon",
   },
   {
@@ -58,7 +57,7 @@ const FEATURES = [
     description:
       "Show where each place is on a map or open it directly in Google Maps. A high-value, low-friction way to make decisions more grounded.",
     tag: "Maps",
-    image: maps.png,
+    image: mapsImg,
     imageAlt: "Map pin icon",
   },
   {
@@ -76,16 +75,16 @@ const FEATURES = [
     description:
       "See when friends liked or visited a place, and if a friend reviews that restaurant, their review appears on the restaurant card so you can get opinions from people you trust.",
     tag: "Social",
-    image: friend-activityImg,
+    image: friendActivityImg,
     imageAlt: "User with star icon",
   },
-    {
+  {
     id: "lists",
     title: "Want to Try / Have Tried Lists",
     description:
       "Separate saved places into 'Want to Try' and 'Have Tried' lists. Great for both group planning and solo exploring.",
     tag: "Personal",
-    image: lists.png,
+    image: listsImg,
     imageAlt: "Checklist icon",
   },
   {
@@ -94,7 +93,7 @@ const FEATURES = [
     description:
       "Down the line, connect to OpenTable or Yelp so you can book directly after matching instead of jumping between apps.",
     tag: "Future",
-    image: reservations.png,
+    image: reservationsImg,
     imageAlt: "Calendar with clock icon",
   },
   {
@@ -103,7 +102,7 @@ const FEATURES = [
     description:
       "Send plans to Google or Apple Calendar so everyone stays aligned on when and where you’re meeting, and automatically check each person’s calendar to find overlapping free times and suggest the best reservation slots.",
     tag: "Future",
-    image: calendar.png,
+    image: calendarImg,
     imageAlt: "Calendar with arrow icon",
   },
   {
@@ -112,7 +111,7 @@ const FEATURES = [
     description:
       "Let groups match on a place when a set portion of the group swipes right (for example, 3 of 5 people), so it’s easier to find options most people like.",
     tag: "Future",
-    image: flexible-matching.png,
+    image: flexibleMatchingImg,
     imageAlt: "Slider controls icon",
   },
   {
@@ -121,42 +120,41 @@ const FEATURES = [
     description:
       "Run quick polls or ranked-choice votes in the group chat to pick from your top matches when there are multiple good options.",
     tag: "Future",
-    image: in-app-polling.png,
+    image: inAppPollingImg,
     imageAlt: "Checkbox list icon",
   },
 ];
 
-
 export default function FeatureSwipeDeck() {
-    const featureQueue = useMemo(() => shuffleArray(FEATURES), []);
+  const featureQueue = useMemo(() => shuffleArray(FEATURES), []);
 
-    return (
-        <section
-            aria-labelledby="feature-deck-heading"
-            className="mb-5 feature-carousel-section"
+  return (
+    <section
+      aria-labelledby="feature-deck-heading"
+      className="mb-5 feature-carousel-section"
+    >
+      <header className="mb-3">
+        <h2 id="feature-deck-heading" className="fw-bold mb-2">
+          Explore the MatchBites feature roadmap
+        </h2>
+        <p className="text-muted mb-0">
+          Swipe or scroll sideways, then tap a card to flip it and see what
+          we’re planning for future versions of MatchBites.
+        </p>
+      </header>
+
+      <div className="feature-carousel-bg">
+        <div
+          className="feature-carousel-scroll"
+          aria-label="Feature cards carousel"
         >
-            <header className="mb-3">
-                <h2 id="feature-deck-heading" className="fw-bold mb-2">
-                    Explore the MatchBites feature roadmap
-                </h2>
-                <p className="text-muted mb-0">
-                    Swipe or scroll sideways, then tap a card to flip it and see what
-                    we’re planning for future versions of MatchBites.
-                </p>
-            </header>
-
-            <div className="feature-carousel-bg">
-                <div
-                    className="feature-carousel-scroll"
-                    aria-label="Feature cards carousel"
-                >
-                    {featureQueue.map((feature) => (
-                        <div key={feature.id} className="feature-carousel-card-snap">
-                            <FeatureCard feature={feature} />
-                        </div>
-                    ))}
-                </div>
+          {featureQueue.map((feature) => (
+            <div key={feature.id} className="feature-carousel-card-snap">
+              <FeatureCard feature={feature} />
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
