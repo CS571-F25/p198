@@ -98,7 +98,7 @@
   flex: 0 0 80%;
   max-width: 360px;
   scroll-snap-align: center;
-  min-height: 320px;
+  min-height: 420px; /* more room for image + title */
 }
 
 /* Feature card hero image area */
@@ -108,7 +108,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem; /* adds breathing room around the icon */
+  padding: 1rem; /* breathing room around the icon */
 }
 
 /* Icon inside feature card */
@@ -123,7 +123,7 @@
 .feature-card-flip-wrapper {
   perspective: 1000px;
   height: 100%;
-  min-height: 320px;
+  min-height: 420px;
   cursor: pointer;
 }
 

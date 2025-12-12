@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import FeatureCard from "./FeatureCard";
 
-// ICON IMPORTS (match your actual files)
+// Icon imports – matching your actual files in src/assets
 import friendsPrivacyImg from "../assets/add-user.png";
 import filtersImg from "../assets/filter.png";
 import undoImg from "../assets/undo.png";
@@ -77,7 +77,7 @@ const FEATURES = [
       "See when friends liked or visited a place, and if a friend reviews that restaurant, their review appears on the restaurant card so you can get opinions from people you trust.",
     tag: "Social",
     image: friendActivityImg,
-    imageAlt: "Review star/icon for friend activity",
+    imageAlt: "Review / comment with star icon",
   },
   {
     id: "lists",

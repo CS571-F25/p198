@@ -1,4 +1,3 @@
-// src/components/FeatureCard.jsx
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 
