@@ -94,6 +94,7 @@
   aspect-ratio: 4 / 3;
 }
 
+/* School logos */
 .school-logo-img {
   height: 44px;
   width: auto;
@@ -105,15 +106,34 @@
   }
 }
 
-.feature-card-clickable {
-  cursor: pointer;
+/* Flip card styles for feature cards */
+.feature-card-flip-wrapper {
+  perspective: 1000px;
   height: 100%;
+  cursor: pointer;
 }
 
-.feature-detail-panel {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+.feature-card-inner {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
 }
 
+.feature-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.feature-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.feature-card-front {
+  z-index: 2;
+}
+
+.feature-card-back {
+  transform: rotateY(180deg);
+}

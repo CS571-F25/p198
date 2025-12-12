@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
+import FAQ from "./pages/FAQ";
+
 
 const FIGMA_URL = "https://gum-cream-89552792.figma.site";
 
@@ -30,6 +32,9 @@ export default function App() {
                 <Nav.Link as={Link} to="/contact">
                   Contact
                 </Nav.Link>
+                <Nav.Link as={Link} to="/faq">
+                  FAQ
+                </Nav.Link>
               </Nav>
               {/* Figma button on right */}
               <Button
@@ -51,6 +56,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
         {/* Footer */}

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import FeatureCard from "./FeatureCard";
 
 // Shuffle helper for initial random order
@@ -79,12 +79,6 @@ const FEATURES = [
 
 export default function FeatureSwipeDeck() {
   const featureQueue = useMemo(() => shuffleArray(FEATURES), []);
-  const [selectedId, setSelectedId] = useState(
-    featureQueue.length > 0 ? featureQueue[0].id : null
-  );
-
-  const selectedFeature =
-    featureQueue.find((f) => f.id === selectedId) || featureQueue[0];
 
   return (
     <section
@@ -96,46 +90,22 @@ export default function FeatureSwipeDeck() {
           Explore the MatchBites feature roadmap
         </h2>
         <p className="text-muted mb-0">
-          Browse some of the core and future features we’re exploring to make
-          planning with friends faster, clearer, and more social.
+          Swipe or scroll sideways, then tap a card to flip it and see what
+          we’re planning for future versions of MatchBites.
         </p>
       </header>
 
       <div className="feature-carousel-bg">
-        {/* Horizontal scrolling carousel */}
         <div
           className="feature-carousel-scroll"
           aria-label="Feature cards carousel"
         >
           {featureQueue.map((feature) => (
             <div key={feature.id} className="feature-carousel-card-snap">
-              <FeatureCard
-                feature={feature}
-                onClick={() => setSelectedId(feature.id)}
-              />
+              <FeatureCard feature={feature} />
             </div>
           ))}
         </div>
-
-        {/* Detail panel for the selected feature */}
-        {selectedFeature && (
-          <div className="feature-detail-panel mt-4" aria-live="polite">
-            <div className="d-flex align-items-center gap-2 mb-2">
-              {selectedFeature.tag && (
-                <span className="badge bg-secondary">
-                  {selectedFeature.tag}
-                </span>
-              )}
-              <h3 className="h5 mb-0">{selectedFeature.title}</h3>
-            </div>
-            <p className="mb-0">{selectedFeature.description}</p>
-          </div>
-        )}
-
-        <p className="mt-3 text-muted small text-center">
-          Tap a card to learn more about that feature. Scroll sideways to see
-          the rest of the roadmap.
-        </p>
       </div>
     </section>
   );
