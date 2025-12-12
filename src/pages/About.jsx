@@ -18,11 +18,6 @@ export default function About() {
 
         {/* School Logos */}
         <div className="school-logos mb-4">
-          <p className="mb-2">
-            This project brings together design and engineering perspectives
-            from both UW–Madison and CMU.
-          </p>
-
           <div className="d-flex flex-column flex-md-row align-items-start gap-3">
             <div className="d-flex align-items-center gap-2">
               <img
@@ -97,12 +92,14 @@ export default function About() {
           <PersonCard
             name="Vincent Zhou"
             college="University of Wisconsin–Madison"
-            major="Co-founder · Product & Engineering"
+            title="Co-founder · Chief of Product & Design"
+            photo={vincentProfilePic}
+            photoAlt="Portrait of Vincent Zhou"
           />
           <PersonCard
             name="Andi Sun"
             college="Carnegie Mellon University"
-            major="Co-founder · Product & Design"
+            title="Co-founder · CEO"
           />
         </div>
       </div>

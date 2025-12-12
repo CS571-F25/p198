@@ -14,7 +14,7 @@ export default function PersonCard({ name, college, major, photo, photoAlt }) {
       <Card.Body>
         <Card.Title className="h5 mb-1">{name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{college}</Card.Subtitle>
-        <Card.Text className="mb-0">{major}</Card.Text>
+        <Card.Text className="mb-0">{title}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -1,3 +1,4 @@
+// src/components/FeatureCard.jsx
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 
@@ -22,6 +23,7 @@ export default function FeatureCard({ feature }) {
       onClick={toggleFlip}
       onKeyDown={handleKeyDown}
       aria-pressed={isFlipped}
+      aria-label={`${title} feature card`}
     >
       <div className={`feature-card-inner ${isFlipped ? "is-flipped" : ""}`}>
         {/* FRONT: image + title */}

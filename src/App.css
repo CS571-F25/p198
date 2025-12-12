@@ -98,7 +98,6 @@
   flex: 0 0 80%;
   max-width: 360px;
   scroll-snap-align: center;
-  /* IMPORTANT: give the card a real height */
   min-height: 320px;
 }
 
@@ -108,14 +107,15 @@
   aspect-ratio: 4 / 3;
 }
 
-/* Flip card styles for feature cards */
+/* Flip card wrapper */
 .feature-card-flip-wrapper {
   perspective: 1000px;
   height: 100%;
-  min-height: 320px; /* make sure the inner content has room */
+  min-height: 320px;
   cursor: pointer;
 }
 
+/* Inner flippable element */
 .feature-card-inner {
   position: relative;
   width: 100%;
@@ -128,6 +128,7 @@
   transform: rotateY(180deg);
 }
 
+/* Faces */
 .feature-card-face {
   position: absolute;
   inset: 0;
@@ -140,19 +141,25 @@
 
 .feature-card-back {
   transform: rotateY(180deg);
+  z-index: 1;
 }
 
+/* Team cards layout */
 .team-card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch;
 }
 
 .person-card {
-  max-width: 260px;
+  height: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
 }
 
 .person-card-img {
-  height: 160px;
+  height: 200px;
+  width: 100%;
   object-fit: cover;
 }
