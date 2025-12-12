@@ -104,3 +104,16 @@
     height: 52px;
   }
 }
+
+.feature-card-clickable {
+  cursor: pointer;
+  height: 100%;
+}
+
+.feature-detail-panel {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
